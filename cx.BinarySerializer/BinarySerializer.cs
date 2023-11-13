@@ -1,10 +1,10 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
-using System;
 using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace BinarySerializer
+namespace cx.BinarySerializer
 {
     public class BinarySerializer
     {
