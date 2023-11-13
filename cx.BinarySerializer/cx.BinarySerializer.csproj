@@ -1,12 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <Version>1.0.0</Version>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>1.0.2</Version>
     <Authors>Tom Lee</Authors>
-    <Company>Conexus AS</Company>
+    <Company>Conexus As</Company>
     <Copyright>Copyright (c) 2023 Tom Lee</Copyright>
     <PackageProjectUrl>https://github.com/NamNguyen09/BinarySerializer</PackageProjectUrl>
     <RepositoryUrl>https://github.com/NamNguyen09/BinarySerializer</RepositoryUrl>
@@ -15,7 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="LICENSE">
+    <None Include="..\LICENSE">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>

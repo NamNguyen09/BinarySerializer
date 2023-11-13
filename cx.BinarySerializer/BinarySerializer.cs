@@ -1,11 +1,14 @@
-﻿using System.Reflection;
+﻿using System.IO;
+using System.Linq;
+using System;
+using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace BinarySerializer
 {
     public class BinarySerializer
     {
-        public byte[]? Serialize<T>(T o) where T : class
+        public byte[] Serialize<T>(T o) where T : class
         {
             if (o == null) return null;
             var binaryFormatter = new BinaryFormatter();
@@ -18,7 +21,7 @@ namespace BinarySerializer
             }
         }
 
-        public T? Deserialize<T>(byte[] stream)
+        public T Deserialize<T>(byte[] stream)
         {
             if (stream == null || !stream.Any()) return default(T);
             var binaryFormatter = new BinaryFormatter();
@@ -29,7 +32,7 @@ namespace BinarySerializer
                 return result;
             }
         }
-        public bool TryDeserialize<T>(byte[] stream, out T? result)
+        public bool TryDeserialize<T>(byte[] stream, out T result)
         {
             try
             {
@@ -58,7 +61,7 @@ namespace BinarySerializer
     {
         public override Type BindToType(string assemblyName, string typeName)
         {
-            Type? tyType = null;
+            Type tyType = null;
             string sShortAssemblyName = assemblyName.Split(',')[0];
 
             Assembly[] ayAssemblies = AppDomain.CurrentDomain.GetAssemblies();
