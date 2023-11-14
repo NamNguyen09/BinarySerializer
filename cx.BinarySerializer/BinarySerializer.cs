@@ -11,7 +11,10 @@ namespace cx.BinarySerializer
         public byte[] Serialize<T>(T o) where T : class
         {
             if (o == null) return null;
-            var binaryFormatter = new BinaryFormatter();
+            var binaryFormatter = new BinaryFormatter
+            {
+                AssemblyFormat = System.Runtime.Serialization.Formatters.FormatterAssemblyStyle.Simple
+            };
 
             using (var memoryStream = new MemoryStream())
             {
@@ -24,7 +27,10 @@ namespace cx.BinarySerializer
         public T Deserialize<T>(byte[] stream)
         {
             if (stream == null || !stream.Any()) return default(T);
-            var binaryFormatter = new BinaryFormatter();
+            var binaryFormatter = new BinaryFormatter
+            {
+                AssemblyFormat = System.Runtime.Serialization.Formatters.FormatterAssemblyStyle.Simple
+            };
             using (var memoryStream = new MemoryStream(stream))
             {
                 memoryStream.Seek(0, SeekOrigin.Begin);
@@ -41,7 +47,10 @@ namespace cx.BinarySerializer
                     result = default(T);
                     return true;
                 }
-                var binaryFormatter = new BinaryFormatter();
+                var binaryFormatter = new BinaryFormatter
+                {
+                    AssemblyFormat = System.Runtime.Serialization.Formatters.FormatterAssemblyStyle.Simple
+                };
                 binaryFormatter.Binder = new IgnoreMissingAsemblySerializationBinder();
                 using (var memoryStream = new MemoryStream(stream))
                 {
